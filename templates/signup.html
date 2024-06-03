@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="static/style.css">
+    <title>Real Estate Price Prediction - Signup</title>
+</head>
+<body>
+    <h1>Real Estate Price Prediction - Signup</h1>
+    <form method="POST" action="/signup" class="container">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required>
+        <br><br>
+        <label for="phone">Phone Number:</label>
+        <input type="text" name="phone" id="phone" required>
+        <br><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+        <br><br>
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" name="confirm_password" id="confirm_password" required>
+        <br><br>
+        <!-- Additional fields for authentication -->
+        <label for="security_question">Security Question:</label>
+        <input type="text" name="security_question" id="security_question" required>
+        <br><br>
+        <label for="security_answer">Security Answer:</label>
+        <input type="password" name="security_answer" id="security_answer" required>
+        <br><br>
+        <input type="submit" value="Signup">
+    </form>
+    <p>Already have an account? <a href="/login">Login</a></p>
+</body>
+</html>

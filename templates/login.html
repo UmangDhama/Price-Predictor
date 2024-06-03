@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Real Estate Price Prediction - Login{% endblock %}
+
+{% block content %}
+    <h1>Real Estate Price Prediction - Login</h1>
+    <form method="POST" action="/login" class="container">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required>
+        <br><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+        <br><br>
+        <input type="submit" value="Login">
+    </form>
+    <p>Don't have an account? <a href="/signup">Signup</a></p>
+{% endblock %}
+
+{% block footer %}
+    <footer>
+        <p>&copy; 2023 Your Company. All rights reserved.</p>
+    </footer>
+{% endblock %}

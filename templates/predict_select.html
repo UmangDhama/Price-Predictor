@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Real Estate Price Prediction{% endblock %}
+
+{% block scripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // add event listener to the checkbox inputs
+            $("input[name='features']").change(function() {
+                var feature = $(this).val();
+                var inputField = $("#" + feature + "-input-field");
+                if ($(this).is(":checked")) {
+                    inputField.show();
+                    // Pre-fill input field with average value
+                    var averageValue = "{{ feature_averages[feature] }}";
+                    $("#" + feature).val(averageValue);
+                } else {
+                    inputField.hide();
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h1>Real Estate Price Prediction</h1>
+    
+    <form action="{{ url_for('predict_select') }}" method="post" class="container2">
+        <h2 style="color: rgb(255, 255, 255); font-weight: bold; font:cambria;">Select the desired features:</h2>
+        
+        {% for feature in selected_features %}
+            <input type="checkbox" name="features" value="{{ feature }}" checked>
+            <label class="newlabel">{{ feature }}</label><br>
+            <div id="{{ feature }}-input-field">
+                <label for="{{ feature }}">{{ feature }}</label>
+                <input type="number" name="{{ feature }}" id="{{ feature }}" step="any" placeholder="Range: {{ feature_ranges[feature]['min'] }} - {{ feature_ranges[feature]['max'] }}" value="{{ feature_averages[feature] }}">
+            </div>
+        {% endfor %}
+        
+        {% for feature in feature_names if feature not in selected_features %}
+            <input type="checkbox" name="features" value="{{ feature }}">
+            <label>{{ feature }}</label><br>
+            <div id="{{ feature }}-input-field">
+                <label for="{{ feature }}">{{ feature }}</label>
+                <input type="number" name="{{ feature }}" id="{{ feature }}" step="any" placeholder="Range: {{ feature_ranges[feature]['min'] }} - {{ feature_ranges[feature]['max'] }}" value="">
+            </div>
+        {% endfor %}
+        
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <footer>
+        <p>&copy; 2023 Your Company. All rights reserved.</p>
+    </footer>
+{% endblock %}

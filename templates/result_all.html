@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Real Estate Price Prediction - Result (Select)</title>
+</head>
+<body>
+    <h1>Real Estate Price Prediction - Result</h1>
+    <div class="res">
+    <h3>Prediction:</h3>
+    <p>The predicted price is ($ in 1000) : {{ prediction }}</p>
+
+    <h3>Selected Features:</h3>
+    <ul>
+        {% for feature, value in features.items() %}
+            <li>{{ feature }}: {{ value }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+    <footer>
+        <p>&copy; 2023 Your Company. All rights reserved.</p>
+    </footer>
+
+    
+    <style>
+        /* Add your CSS styles here */
+        /* Example CSS styles */
+        .res{
+            /* gap: 20px; */
+            color: white;
+            margin: auto;
+            background-blend-mode: overlay;
+            background-color: rgb(65, 62, 62,0.792);
+            text-align: center;
+            border: 2px solid black;
+            border-radius: 30px;
+            width:40%;
+            /* margin: auto; */
+            padding-left:1%;
+            padding-right:1%;
+            padding-top: 2%;
+            padding-bottom: 1%;
+        }
+       
+        
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+        
+        li {
+            text-align: center;
+        }
+        
+        footer {
+            background-color: #333333;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</body>
+</html>

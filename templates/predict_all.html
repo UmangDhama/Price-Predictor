@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Real Estate Price Prediction - All Features{% endblock %}
+
+{% block content %}
+    <h1>Real Estate Price Prediction - All Features</h1>
+    <form method="POST" action="{{ url_for('predict_all') }}" class="container2">
+        {% for feature in feature_names %}
+            <label class="newlabel">{{ feature }}:</label>
+            {% if feature == 'Room' %}
+                <input class="predallinput" type="number" name="{{ feature }}" step="any" 
+                       min="1" max="5" 
+                       placeholder="Min: 1 - Max: 5" 
+                       required>
+            {% else %}
+                <input class="predallinput" type="number" name="{{ feature }}" step="any" 
+                       min="{{ feature_ranges[feature]['min'] }}" max="{{ feature_ranges[feature]['max'] }}" 
+                       placeholder="Min: {{ feature_ranges[feature]['min'] }} - Max: {{ feature_ranges[feature]['max'] }}" 
+                       required>
+            {% endif %}
+            <br><br>
+        {% endfor %}
+        <input type="submit" value="Predict">
+    </form>
+
+    <footer>
+        <p>&copy; 2023 Your Company. All rights reserved.</p>
+    </footer>
+{% endblock %}
